@@ -39,3 +39,11 @@ Este selector debe rellenarse con las categorías que provee la API
 Tras realizar la pregunta tipo test, implemente dos botones para poder votar positiva o negativamente sobre una pregunta tipo test.
 
 <img src="https://oscarm.tinytake.com/media/166e515?filename=1721287218440_TinyTake18-07-2024-09-20-07_638568840167408950.png&sub_type=thumbnail_preview&type=attachment&width=607&height=414" title="Powered by TinyTake Screen Capture"/><br>
+
+Consulta la documentación de la API para saber como realizar esta acción.
+
+## Iteración 6
+
+Crea una nueva sección en la app para proponer nuevas preguntas tipo test a la API.
+Puedes crear un formulario con todos los campos necesarios para agregar un nueva pregunta.
+Consulta la documtación de la API para saber que JSON debes generar y a donde tienes que ejecutar la petición de tipo POST.
