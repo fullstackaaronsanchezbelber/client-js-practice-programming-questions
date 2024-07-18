@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Preparando entrevistas técnicas</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2.0.6/css/pico.min.css">
+</head>
+
+<body>
+    <main class="container">
+        <h1>Piensa la respuesta correcta</h1>
+        <h2 id="question"></h2>
+        <artice id="a1"></artice>
+        <artice id="a2"></artice>
+        <artice id="a3"></artice>
+        <artice id="a4"></artice>
+        <article id="correct-answer" style="visibility: hidden;">
+        </article>
+        <button>Revelar respuesta correcta</button>
+    </main>
+    <script>
+        async function getQuestion() {
+
+            // 1. Hacer una petición fetch a http://localhost:3000/api/v1/question/random
+            const response = await fetch('https://api-programming-questions.onrender.com/api/v1/question/random');
+
+            // 2. Procesar el JSON que vaís a recibir y rellenar el DOM
+            const data = await response.json();
+            console.log("🚀 ~ file: index.html:32 ~ getQuestion ~ data:", data)
+        }
+        getQuestion();
+
+        // 3. Añadir un listener 'click' al botón. Cuando el usuario haga clic, debemos cambiar el CSS de visibility:hidden a visbility:visible
+    </script>
+</body>
+
+</html>
