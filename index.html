@@ -37,6 +37,8 @@
         
         <button id="restart">Restart: </button>
 
+        <select name="categories" id="categories">Seleccione su categoria: </select>
+
         
 
     </main>
@@ -80,6 +82,27 @@
                 getQuestion()
             });
             
+        async function getCategory() {
+            const response_ = await fetch('https://api-programming-questions.onrender.com/api/v1/categories')    
+            const data_ = await response_.json();
+            console.log("🚀 ~ file: index.html:32 ~ getQuestion ~ data:", data_)
+
+            const selec = document.getElementById('categories')
+
+            data_.forEach(element => {
+                const option = document.createElement('option')
+                
+                option.value = element
+                option.textContent=element
+
+                selec.appendChild(option)
+
+                // selec.appendChild(option.value)
+                
+                
+            });
+        }
+        getCategory()
    
 
         // Pregunta
