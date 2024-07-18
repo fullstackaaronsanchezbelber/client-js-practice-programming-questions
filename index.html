@@ -6,19 +6,39 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Preparando entrevistas técnicas</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2.0.6/css/pico.min.css">
+    <style>
+        .correct {
+            color: green;
+            font-weight: bold;
+        }
+        .incorrect {
+            color: red;
+            font-weight: bold;
+        }
+    </style>
 </head>
 
 <body>
     <main class="container">
         <h1>Piensa la respuesta correcta</h1>
-        <h2 id="question"></h2>
-        <artice id="a1"></artice>
-        <artice id="a2"></artice>
-        <artice id="a3"></artice>
-        <artice id="a4"></artice>
+        <h2 id="question">Pregunta: </h2>
+        <ul>
+        <li><artice id="a1">Respuesta A: </artice></li>
+        <li><artice id="a2">Respuesta B:</artice></li>
+        <li><artice id="a3">Respuesta C:</artice></li>
+        <li><artice id="a4">Respuesta D:</artice></li>
         <article id="correct-answer" style="visibility: hidden;">
+        </ul>
         </article>
-        <button>Revelar respuesta correcta</button>
+        <button id="revealButton">Revelar respuesta correcta</button>
+
+        <div id="referencia"><a href="">Referencia:</a> </div>
+
+        
+        <button id="restart">Restart: </button>
+
+        
+
     </main>
     <script>
         async function getQuestion() {
@@ -29,10 +49,49 @@
             // 2. Procesar el JSON que vaís a recibir y rellenar el DOM
             const data = await response.json();
             console.log("🚀 ~ file: index.html:32 ~ getQuestion ~ data:", data)
+
+            document.getElementById('question').textContent = data.question.text
+
+            // 2) para mezlcar, el sort
+            const answers = [...data.incorrectAnswers, data.correctAnswer];
+            answers.sort(() => Math.random() - 0.5);
+            
+            
+            document.getElementById('a1').textContent = answers[0]
+            document.getElementById('a2').textContent = answers[1]
+            document.getElementById('a3').textContent = answers[2]
+            document.getElementById('a4').textContent = answers[3]
+
+            document.getElementById('revealButton').addEventListener('click', () => {
+                document.getElementById('correct-answer').textContent = data.correctAnswer;
+                document.getElementById('correct-answer').style.visibility = 'visible';
+
+            });
+
+            document.getElementById('referencia').textContent = data.referencesLink
+
+            
+
         }
         getQuestion();
+        
+        document.getElementById('restart').addEventListener('click', () => {
+                document.getElementById('correct-answer').style.visibility = 'hidden';
+                getQuestion()
+            });
+            
+   
 
+        // Pregunta
+        // Posibles respuestes
+        // Respuesta correcta
+        // document.getElementById('question').textContent = data.question.text;
+        // document.
+        // document.
         // 3. Añadir un listener 'click' al botón. Cuando el usuario haga clic, debemos cambiar el CSS de visibility:hidden a visbility:visible
+        
+º       
+
     </script>
 </body>
 
